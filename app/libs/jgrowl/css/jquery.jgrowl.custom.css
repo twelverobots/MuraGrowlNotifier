@@ -1,0 +1,62 @@
+div.jGrowl div.jGrowl-notification.attention {
+	background-color: #339900;
+	color: white;
+	border: 1px solid black;
+	opacity: 0.9;
+	background-image: url("../../../images/CrystalProject/1324647148_alert.png");
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	padding-left: 60px;
+	
+}
+
+div.jGrowl div.jGrowl-notification.alert {
+	color: white;
+	background-color: #B20704;
+	border: 1px solid black;
+	opacity: 0.9;
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	padding-left: 60px;
+	
+}
+
+div.jGrowl div.jGrowl-notification.announcement {
+	background-color: #2e4082;
+	color: white;
+	border: 1px solid black;
+	opacity: 0.9;
+	background-image: url("../../../images/CrystalProject/1324647216_agt_announcements.png");
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	padding-left: 60px;
+	
+}
+
+div.jGrowl div.jGrowl-notification.news {
+	background-color: #2e4082;
+	color: white;
+	border: 1px solid black;
+	opacity: 0.9;
+	background-image: url("../../../images/CrystalProject/1324647403_news.png");
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	padding-left: 60px;
+	
+}
+
+div.jGrowl div.jGrowl-notification.cancellation {
+	background-color: #3399ff;
+	color: white;
+	border: 1px solid black;
+	opacity: 0.9;
+	background-image: url("../../../images/CrystalProject/1324647450_agt_action_fail1.png");
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	padding-left: 60px;
+	
+}
+
+.jGrowl-closer {
+	color: white;
+}
