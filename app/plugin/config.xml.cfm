@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-	<name>Notifier Plugin</name>
+	<name>NotifierPlugin</name>
 	<package>NotifierPlugin</package>
-	<loadPriority></loadPriority>
+	<loadPriority>5</loadPriority>
 	<version>0.3</version>
+    <autodeploy>true</autodeploy>
 	<provider>Jason P. Dean</provider>
 	<providerURL>http://www.12robots.com</providerURL>
 	<category>Application</category>

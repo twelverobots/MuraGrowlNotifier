@@ -1,0 +1,65 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="notifierMessageService" class="${packageName}.server.services.MessageService" singleton="true">
+        <property name="MessageGateway">
+            <ref bean="notifierMessageGateway"/>
+        </property>
+    </bean>
+    <bean id="notifierMessageGateway" class="${packageName}.server.model.MessageGateway" singleton="true">
+        <constructor-arg name="dsn">
+            <value>${dsn}</value>
+        </constructor-arg>
+
+        <constructor-arg name="tablePrefix">
+            <value>${tablePrefix}</value>
+        </constructor-arg>
+
+        <constructor-arg name="packageName">
+            <value>${packageName}</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="remoteMessageService" class="coldspring.aop.framework.RemoteFactoryBean" lazy-init="false">
+        <property name="target">
+            <ref bean="notifierMessageService"/>
+        </property>
+        <property name="serviceName">
+            <value>RemoteMessageService</value>
+        </property>
+        <property name="relativePath">
+            <value>/NotifierPlugin/server/remote</value>
+        </property>
+        <property name="remoteMethodNames">
+            <value>getAllMessages</value>
+        </property>
+        <property name="beanFactoryName">
+            <value>${packageName}BeanFactory</value>
+        </property>
+
+        <property name="interceptorNames">
+            <list>
+                <value>jsonUtilAdvisor</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean
+            id="jsonUtilAdvice"
+            class="${packageName}.server.libs.jsonutils.JSONUtilAdvice" />
+
+    <bean
+        id="jsonUtilAdvisor"
+        class="coldspring.aop.support.NamedMethodPointcutAdvisor">
+
+        <property name="advice">
+            <ref bean="jsonUtilAdvice" />
+        </property>
+        <property name="mappedNames">
+            <value>*</value>
+        </property>
+
+    </bean>
+</beans>
+

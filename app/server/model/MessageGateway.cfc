@@ -1,15 +1,17 @@
-﻿<cfcomponent>
+﻿<cfcomponent accessors="true">
 	
 	<cfset variables.dsn = "" />
 	<cfset variables.prefix = "" />
+    <cfset variables.packageName = "" />
 	
-	<cffunction name="init" access="public" returntype="NotifierPlugin.model.MessageGateway" output="false">
+	<cffunction name="init" access="public" returntype="any" output="false">
 		<cfargument name="dsn" type="string" />
 		<cfargument name="tablePrefix" />
+        <cfargument name="packageName" />
 		
 		<cfset variables.dsn = arguments.dsn />
 		<cfset variables.prefix = arguments.tablePrefix />
-		
+        <cfset variables.packageName = arguments.packageName />
 		<cfreturn this />
 	</cffunction>
 	
@@ -24,7 +26,7 @@
 			FROM #variables.prefix#notifiermessages
 			ORDER BY startToDisplayDate ASC
 		</cfquery>
-		
+
 		<cfreturn createMessageArray(getMessages) />
 	</cffunction>
 	
@@ -123,7 +125,7 @@
 		</cfquery>
 		
 		<cfloop query="getMessage">
-			<cfset currentMessage = createObject("component","NotifierPlugin.model.Message").init(
+			<cfset currentMessage = createObject("component","#variables.packageName#.server.model.Message").init(
 				getMessage.messageid, 
 				getMessage..title,
 				getMessage.message, 
@@ -220,9 +222,9 @@
 		<cfset var msgArray = ArrayNew(1) />
 		<cfset var currentMessage = "" />
 		<cfset var msgQuery = arguments.messages />
-		
+
 		<cfloop query="msgQuery">
-			<cfset currentMessage = createObject("component","NotifierPlugin.model.Message").init(
+			<cfset currentMessage = createObject("component","#variables.packageName#.server.model.Message").init(
 				msgQuery.messageid, 
 				msgQuery.title,
 				msgQuery.message, 

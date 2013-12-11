@@ -24,7 +24,7 @@
 		<cfset pluginConfig.setSetting("pluginMode","Admin")/>
 	</cfif>
 
-	<!--- This plugin is onyl available to the S2 Role --->
+	<!--- This plugin is only available to the S2 Role --->
 	<cfif pluginConfig.getSetting("pluginMode") eq "Admin" and not isUserInRole('S2')>
 		<cfif not structKeyExists(session,"siteID") or not application.permUtility.getModulePerm(pluginConfig.getValue('moduleID'),session.siteid)>
 			<cflocation url="#application.configBean.getContext()#/admin/" addtoken="false">

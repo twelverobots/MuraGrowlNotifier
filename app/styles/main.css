@@ -1,16 +1,15 @@
 hr {
   margin-top: 15px;
   margin-bottom:15px;
-  border: 1px dotted ##d9d9d9;
+  border: 1px dotted #d9d9d9;
 }
 
-##customSettings {
+#customSettings {
   display:none;
 }
 
 ul#themeSettings {
   list-style: none;
-  list-style-position: outside;
 }
 
 ul#themeSettings li input{
@@ -18,21 +17,21 @@ ul#themeSettings li input{
   vertical-align: baseline;
 }
 
-##iconBox {
+#iconBox {
   padding: 10px;
-  border: 1px dotted ##d9d9d9;
+  border: 1px dotted #d9d9d9;
   margin-top: 10px;
   position: absolute;
-  background-color: ##efefef;
+  background-color: #efefef;
   display:none;
 }
-##iconBox img {
+#iconBox img {
   margin-right: 10px;
   cursor: pointer;
 }
 
 .requiredMark {
-  color: red;
+  color: #FF0000;
 }
 
 .error, .success {
